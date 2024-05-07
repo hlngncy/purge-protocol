@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 464ee20f51cc8d34bad437ac998f272c, type: 3}
+  m_Name: SO_AgentSuitColorPalette
+  m_EditorClassIdentifier: 
+  black:
+  - {r: 0.028301895, g: 0.028301895, b: 0.028301895, a: 1}
+  - {r: 0.009433985, g: 0.009433985, b: 0.009433985, a: 1}
+  white:
+  - {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 1}
+  - {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 1}
+  blue:
+  - {r: 0.02305091, g: 0.0498451, b: 0.13207549, a: 1}
+  - {r: 0.009300461, g: 0.036292773, b: 0.103773594, a: 1}
+  red:
+  - {r: 0.09433961, g: 0.013794942, b: 0.013794942, a: 1}
+  - {r: 0.1792453, g: 0, b: 0, a: 1}
+  purple:
+  - {r: 0.09733359, g: 0.032974374, b: 0.1792453, a: 1}
+  - {r: 0.122641504, g: 0, b: 0.24528301, a: 1}
+  yellow:
+  - {r: 0.38679248, g: 0.21842399, b: 0, a: 1}
+  - {r: 0.05660379, g: 0.05660379, b: 0.014684946, a: 1}
