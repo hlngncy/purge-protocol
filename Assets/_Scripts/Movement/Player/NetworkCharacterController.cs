@@ -91,14 +91,14 @@ public class NetworkCharacterController : NetworkTransform {
   /// Basic implementation of a character controller's movement function based on an intended direction.
   /// <param name="direction">Intended movement direction, subject to movement query, acceleration and max speed values.</param>
   /// </summary>
-  public virtual void Move(Vector3 direction,bool isFiring, float verticalInput) {
+  public virtual void Move(Vector3 direction,bool isFiring, float verticalInput, float horizontalInput) {
     var deltaTime    = Runner.DeltaTime;
     var previousPos  = transform.position;
     var moveVelocity = Velocity;
 
     direction = direction.normalized * rotationSpeed;
     
-    _speedFactor = verticalInput < 0 ? .7f : 1;
+    _speedFactor = verticalInput < 0 && horizontalInput != 0 ? .7f : 1;
     _speedFactor = isFiring ? .5f: _speedFactor;
     
     

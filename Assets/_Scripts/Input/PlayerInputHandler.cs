@@ -58,7 +58,7 @@ public class PlayerInputHandler : NetworkBehaviour,IBeforeUpdate
             _characterController.Rotate(input.horizontalRotation);
             _direction = _t.forward * input.verticalMovement + _t.right * input.horizontalMovement;
             _direction.Normalize();
-            _characterController.Move(_direction, input.isFiring, input.verticalMovement);
+            _characterController.Move(_direction, input.isFiring, input.verticalMovement, input.horizontalMovement);
             if (input.networkButtons.WasPressed(NetworkButtonsPrev, PlayerButtons.Jump))
             {
                 _characterController.Jump();

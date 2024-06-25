@@ -75,7 +75,7 @@ public class ControllerPrototype : Fusion.NetworkBehaviour {
     }
 
     if (_ncc) {
-      _ncc.Move(direction, false, 0);
+      _ncc.Move(direction, false, 0, 0);
     } else if (_nrb && !_nrb.Rigidbody.isKinematic) {
       _nrb.Rigidbody.AddForce(direction * Speed);
     } else if (_nrb2d && !_nrb2d.Rigidbody.isKinematic) {
