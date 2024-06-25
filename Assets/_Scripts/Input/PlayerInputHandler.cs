@@ -7,6 +7,7 @@ public class PlayerInputHandler : NetworkBehaviour,IBeforeUpdate
     [Networked] public NetworkButtons NetworkButtonsPrev { get; set; }
     [Networked] private Vector2 MovementInput { get; set; }
     [Networked] private float NetworkVerticalRotation { get; set; }
+    [Networked] private bool isJumping { get; set; }
     
     [SerializeField] private CameraController _cameraController;
     [SerializeField] private EntityAnimationController _animationController;
@@ -59,9 +60,14 @@ public class PlayerInputHandler : NetworkBehaviour,IBeforeUpdate
             _direction = _t.forward * input.verticalMovement + _t.right * input.horizontalMovement;
             _direction.Normalize();
             _characterController.Move(_direction, input.isFiring, input.verticalMovement, input.horizontalMovement);
-            if (input.networkButtons.WasPressed(NetworkButtonsPrev, PlayerButtons.Jump))
+            if (input.networkButtons.WasPressed(NetworkButtonsPrev, PlayerButtons.Jump) && !input.isFiring && input.verticalMovement > 0 && input.horizontalMovement == 0)
             {
                 _characterController.Jump();
+                isJumping = true;
+            }
+            else
+            {
+                isJumping = false;
             }
 
             MovementInput = new Vector2(input.horizontalMovement, input.verticalMovement);
@@ -78,7 +84,7 @@ public class PlayerInputHandler : NetworkBehaviour,IBeforeUpdate
     public override void Render()
     {
         base.Render();
-        _animationController.Move(MovementInput.x,MovementInput.y,MathF.Abs(_characterController.Velocity.magnitude), _characterController.IsGrounded, _horizontalButtonPress);
+        _animationController.Move(MovementInput.x,MovementInput.y,MathF.Abs(_characterController.Velocity.magnitude), _characterController.IsGrounded, _horizontalButtonPress, isJumping);
         _animationController.SetInputs(_data,NetworkButtonsPrev);
     }
 

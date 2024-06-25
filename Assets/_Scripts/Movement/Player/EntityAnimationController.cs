@@ -13,7 +13,7 @@ public class EntityAnimationController : MonoBehaviour
     private static readonly int X = Animator.StringToHash("X");
     private static readonly int Speed = Animator.StringToHash("Speed");
     private static readonly int OnGround = Animator.StringToHash("OnGround");
-    private static readonly int Jump = Animator.StringToHash("Jump");
+    private static readonly int Jump = Animator.StringToHash("Roll");
     private static readonly int Aiming = Animator.StringToHash("Aiming");
     private static readonly int Shoot = Animator.StringToHash("Shoot");
     private static readonly int Reloading = Animator.StringToHash("Reloading");
@@ -44,7 +44,7 @@ public class EntityAnimationController : MonoBehaviour
         _buttons = previousNetworkButtons;
         SetActions();
     }
-    public void Move(float posX, float posY, float speed, bool isGrounded, bool isHorizontalButtonPressed = true)
+    public void Move(float posX, float posY, float speed, bool isGrounded,  bool isHorizontalButtonPressed = true, bool isJumping = false)
     {
         if (isHorizontalButtonPressed)
         {
@@ -55,6 +55,7 @@ public class EntityAnimationController : MonoBehaviour
         _animator.SetFloat(X, posX);
         _animator.SetFloat(Y, posY);
         _animator.SetBool(OnGround, isGrounded);
+        if(isJumping && !_animator.GetBool(Aiming) && speed != 0) _animator.SetTrigger(Jump);
     }
 
     private void SetActions()
