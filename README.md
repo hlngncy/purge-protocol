@@ -1,2 +1,2 @@
 # purge-protocol
-Multiplayer tps wave clear
+Multiplayer tps wave clear game.
